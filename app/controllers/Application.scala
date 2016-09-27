@@ -5,7 +5,7 @@ import play.twirl.api.Html
 
 class Application extends Controller {
 
-  def index = Action {
+  def main = Action {
     val content = Html("<div>This is the content for the sample app<div>")
     Ok(views.html.main("Home")(content))
   }
