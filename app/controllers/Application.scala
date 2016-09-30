@@ -6,6 +6,7 @@ import models.{Subscription, User}
 import play.api.libs.json.{Json, JsValue}
 import play.api.mvc._
 import play.twirl.api.Html
+import play.api.libs.concurrent.Execution.Implicits._
 
 class Application extends Controller {
 
@@ -31,13 +32,13 @@ class Application extends Controller {
   //      }
   //  }
 
-  def subscribe = Action(parse.json) {
-    request =>
-      val reqData: JsValue = request.body
-      val emailId = (reqData \ "emailId").as[String]
-      val interval = (reqData \ "interval").as[String]
-      Ok(s"added $emailId to subscriber's list and will send updates every $interval")
-  }
+//  def subscribe = Action(parse.json) {
+//    request =>
+//      val reqData: JsValue = request.body
+//      val emailId = (reqData \ "emailId").as[String]
+//      val interval = (reqData \ "interval").as[String]
+//      Ok(s"added $emailId to subscriber's list and will send updates every $interval")
+//  }
 
   def subscribe = Action(parse.tolerantJson) {
     request =>
