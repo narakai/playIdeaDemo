@@ -3,16 +3,21 @@
 # ~~~~
 
 # Home page
-GET           /                    @controllers.TaskController.index
-GET           /about               @controllers.Application.about
-GET           /main                @controllers.Application.main
+GET           /                          @controllers.TaskController.index
+GET           /about                     @controllers.Application.about
+GET           /main                      @controllers.Application.main
+POST          /subscribe                 @controllers.Application.subscribe
 
 # Tasks
-GET           /tasks               @controllers.TaskController.tasks
-POST          /tasks               @controllers.TaskController.newTask
-DELETE        /tasks/:id           @controllers.TaskController.deleteTask(id: Int)
+GET           /tasks                     @controllers.TaskController.tasks
+POST          /tasks                     @controllers.TaskController.newTask
+DELETE        /tasks/:id                 @controllers.TaskController.deleteTask(id: Int)
+
+#Aritst
+GET           /api/artist                @controllers.TaskController.listArtist
+GET           /api/artist/:name          @controllers.TaskController.fetchArtistByName(name)
+GET           /api/search/artist         @controllers.TaskController.search(name:String?="", country:String?="")
+GET           /api/search2/artist        @controllers.TaskController.search2(name:Option[String], country:String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET           /assets/*file        controllers.Assets.at(path="/public", file)
-
-    
+GET           /assets/*file              controllers.Assets.at(path="/public", file)
